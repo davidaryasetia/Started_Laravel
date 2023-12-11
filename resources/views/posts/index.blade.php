@@ -38,7 +38,7 @@
                                     <td>{{$post->title}}</td>
                                     <td>{{!! $post->content !!}}</td>
                                     <td class="text-center">
-                                        <form onsubmit="return confirm('Apakah Anda yakin?');" action="{{route('posts.destroy', $post->id)}}" method="POST">
+                                        <form onsubmit="return confirm('Apakah Anda yakin ingin menghapus data?');" action="{{route('posts.destroy', $post->id)}}" method="POST">
                                             <a href="{{route('posts.show', $post->id)}}" class="btn btn-sm btn-dark">show</a>
                                             <a href="{{route('posts.edit', $post->id)}}" class="btn btn-sm btn-primary">edit</a>
                                             @csrf

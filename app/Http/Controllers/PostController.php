@@ -118,4 +118,18 @@ class PostController extends Controller
         return redirect()->route('posts.index')->with(['success'=>'Data Berhasil Diubah']);
     }
 
+    // membuat method baru dengan nama destroy untuk delete data
+    public function destroy($id): RedirectResponse{
+        // melakukan get data post berdasarkan id
+        $post = Post::findOrFail($id);
+
+        // delete gambar yang ada di folder storage/app/public/posts
+        Storage::delete('public/posts'. $post->image);
+
+        // melakukan delete data di database
+        $post->delete();
+
+        // jika data berhasil di delete diarahkan ke index
+        return redirect()->route('posts.index')->with(['success'=>'Data Berhasil Dihapus']);
+    }
 }
